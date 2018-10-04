@@ -40,12 +40,12 @@ public class MainFrame extends JFrame {
         jbtnlogin.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                if(new String(jtf.getText()).equals("8712")&& new String(jpf.getPassword()).equals("19981212")){
+                if(new String(jtf.getText()).equals("8712")&& new String(jpf.getPassword()).equals("1212")){
                     Success suc = new Success();
                     suc.setVisible(true);
+                    MainFrame.this.dispose();
                 }else {
-                    Fail fai = new Fail();
-                    fai.setVisible(true);
+                    JOptionPane.showMessageDialog(null,"帳號或密碼錯誤");
                 }
             }
         });
@@ -60,3 +60,4 @@ public class MainFrame extends JFrame {
         jpf.setText(lg);
     }
 }
+
