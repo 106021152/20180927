@@ -12,7 +12,7 @@ public class RandomPassword extends JFrame {
     private String[] btnLabel = new String[10];
     private Container cp;
     private Font fon = new Font(null, Font.BOLD, 32);
-    private MainFrame frme;
+    private MainFrame lg;
     public RandomPassword() {
 
         init();
@@ -52,12 +52,11 @@ public class RandomPassword extends JFrame {
         jbtn[11].addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                frme.setPassWord(jlb.getText());
+                lg.setPassWord(jlb.getText());
                 RandomPassword.this.setVisible(false);
             }
         });
     }
-
     public void genjbtnLabel(String str[]) {
         int i = 0;
         Random rad = new Random(System.currentTimeMillis());
