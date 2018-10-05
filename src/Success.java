@@ -10,6 +10,7 @@ public class Success extends JFrame {
     private JMenu jmG = new JMenu("Game");
     private JMenu jmH = new JMenu("Help");
     private JMenuItem jmiOOXX = new JMenuItem("OOXX");
+    private JMenuItem jmiEncrypt = new JMenuItem("Encrypt");
     private JMenuItem jmiOpen = new JMenuItem("Open");
     private JMenuItem jmiClose = new JMenuItem("Close");
     private JMenuItem jmiExit = new JMenuItem("Exit");
@@ -20,11 +21,13 @@ public class Success extends JFrame {
         this.setBounds(100,100,800,600);
         this.setLayout(null);
         this.setJMenuBar(jmb);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         jmb.add(jmF);
         jmb.add(jmT);
         jmb.add(jmG);
         jmb.add(jmH);
         jmG.add(jmiOOXX);
+        jmT.add(jmiEncrypt);
         jmF.add(jmiOpen);
         jmF.add(jmiClose);
         jmF.add(jmiExit);
@@ -32,6 +35,14 @@ public class Success extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
+            }
+        });
+        jmiEncrypt.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Encrypt ec = new Encrypt();
+                ec.setVisible(true);
+                Success.this.setVisible(false);
             }
         });
         jmiOOXX.addActionListener(new AbstractAction() {
@@ -44,3 +55,4 @@ public class Success extends JFrame {
         });
     }
 }
+
