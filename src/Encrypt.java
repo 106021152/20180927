@@ -1,8 +1,12 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+        import java.awt.*;
+        import java.awt.event.ActionEvent;
+        import java.awt.event.WindowAdapter;
+        import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Encrypt extends JFrame {
     private JLabel jlbM = new JLabel("Method");
@@ -16,6 +20,12 @@ public class Encrypt extends JFrame {
     private JComboBox jcb = new JComboBox(methodstr);
     private JRadioButton jbtnE = new JRadioButton("Encrypt");
     private JRadioButton jbtnD = new JRadioButton("Decrypt");
+    private JMenuBar jmb = new JMenuBar();
+    private JMenu jmF = new JMenu("File");
+    private JMenu jmA = new JMenu("About");
+    private JMenuItem jmiOpen = new JMenuItem("Open");
+    private JMenuItem jmiClose = new JMenuItem("Close");
+    private JFileChooser jfc = new JFileChooser();
     private JButton jbtnR = new JButton("Run");
     private JButton jbtnC = new JButton("Close");
     private JPanel jpnC = new JPanel(new GridLayout(8,1,2,2));
@@ -29,10 +39,15 @@ public class Encrypt extends JFrame {
     public void init(){
         this.setBounds(100,100,500,500);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setJMenuBar(jmb);
         cp = this.getContentPane();
         cp.add(jpnC,BorderLayout.CENTER);
         cp.add(jpnL,BorderLayout.WEST);
         cp.add(jpnR,BorderLayout.EAST);
+        jmb.add(jmF);
+        jmb.add(jmA);
+        jmF.add(jmiOpen);
+        jmF.add(jmiClose);
         jpnC.add(jlbM);
         jpnC.add(jcb);
         jpnC.add(jlbK);
@@ -60,15 +75,15 @@ public class Encrypt extends JFrame {
                                 break;
                             case 2:
                                 try {
-                                int key = Integer.parseInt(jtf.getText());
-                                char data [] = jaL.getText().toCharArray();
-                                for(int i = 0 ; i < dataLength; i++){
-                                    data[i] = (char) (data[i]+ key);
-                                }
+                                    int key = Integer.parseInt(jtf.getText());
+                                    char data [] = jaL.getText().toCharArray();
+                                    for(int i = 0 ; i < dataLength; i++){
+                                        data[i] = (char) (data[i]+ key);
+                                    }
                                     jaR.setText(new String(data));
-                            }catch (NumberFormatException exp){
-                                JOptionPane.showMessageDialog(Encrypt.this,"key is not a Number");
-                            }catch (Exception exp1){
+                                }catch (NumberFormatException exp){
+                                    JOptionPane.showMessageDialog(Encrypt.this,"key is not a Number");
+                                }catch (Exception exp1){
                                     JOptionPane.showMessageDialog(Encrypt.this,"Error:"+exp1.toString());
                                 }
                                 break;
@@ -116,6 +131,29 @@ public class Encrypt extends JFrame {
                 }
             }
         });
+
+        jmiOpen.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try{
+                    if (jfc.showOpenDialog(Encrypt.this) == JFileChooser.APPROVE_OPTION){
+                        jaL.setText("");
+                        String str = "";
+                        File selectFile = jfc.getSelectedFile();
+                        FileReader fr = new FileReader(selectFile);
+                        BufferedReader bfr = new BufferedReader(fr);
+                        while ((str = bfr.readLine()) != null){
+                            jaL.append(str);
+                        }
+                        fr.close();
+                    }
+                }catch (IOException ioe){
+                    JOptionPane.showMessageDialog(Encrypt.this, "Open file error: "
+                            +ioe.toString());
+                }
+            }
+        });
+
         jbtnC.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
