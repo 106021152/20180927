@@ -33,11 +33,14 @@ public class Encrypt extends JFrame {
     private JPanel jpnR = new JPanel();
     Container cp;
     ButtonGroup BG = new ButtonGroup();
+    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private int screew = screenSize.width,screeh = screenSize.height;
+    private int frmw = 500,frmh = 500;
     public Encrypt(){
         init();
     }
     public void init(){
-        this.setBounds(100,100,500,500);
+        this.setBounds(screew/2 - frmw/2 , screeh/2 - frmh/2 , frmw,frmh);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setJMenuBar(jmb);
         cp = this.getContentPane();
@@ -195,8 +198,8 @@ public class Encrypt extends JFrame {
         jbtnCr.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-             jaL.setText("");
-             jaR.setText("");
+                jaL.setText("");
+                jaR.setText("");
             }
         });
 
