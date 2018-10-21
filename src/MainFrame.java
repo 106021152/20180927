@@ -14,6 +14,9 @@ public class MainFrame extends JFrame {
     private JTextField jtf = new JTextField();
     private JPasswordField jpf = new JPasswordField();
     private Container cp;
+    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+    private int screew = screenSize.width,screeh = screenSize.height;
+    private int frmw = 400,frmh = 150;
     public MainFrame(){
         init();
     }
@@ -29,7 +32,7 @@ public class MainFrame extends JFrame {
         jpns.add(jbtnlogin);
         jpns.add(jbtnexit);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setBounds(200,200,300,100);
+        this.setBounds(screew/2 - frmw/2 , screeh/2 - frmh/2 , frmw,frmh);
         jbtnkey.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -60,4 +63,6 @@ public class MainFrame extends JFrame {
         jpf.setText(lg);
     }
 }
+
+
 
