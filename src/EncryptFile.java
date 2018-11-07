@@ -112,7 +112,7 @@ public class EncryptFile extends JFrame {
                 }
             }
         });
-        this.addWindowFocusListener(new WindowAdapter() {
+        this.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 Success sc = new Success();
