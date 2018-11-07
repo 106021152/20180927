@@ -2,6 +2,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class CodeTable extends JFrame {
     private JLabel jlbs[] = new JLabel[8];
@@ -22,6 +24,7 @@ public class CodeTable extends JFrame {
         init();
     }
     public void init(){
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         cp = this.getContentPane();
         cp.setLayout(new BorderLayout(3,3));
         this.setBounds(screew / 2 - frmw / 2, screeh / 2 - frmh / 2, frmw, frmh);
@@ -95,6 +98,13 @@ public class CodeTable extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
+            }
+        });
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Success sc = new Success();
+                sc.setVisible(true);
             }
         });
     }
