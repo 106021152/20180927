@@ -11,10 +11,13 @@ public class Success extends JFrame {
     private JMenu jmH = new JMenu("Help");
     private JMenuItem jmiOOXX = new JMenuItem("OOXX");
     private JMenuItem jmiEncrypt = new JMenuItem("Encrypt");
+    private JMenuItem jmiEncryptF = new JMenuItem("Encrypt File");
+    private JMenuItem jmiCodeTable = new JMenuItem("CodeTable");
     private JMenuItem jmiOpen = new JMenuItem("Open");
     private JMenuItem jmiClose = new JMenuItem("Close");
     private JMenuItem jmiExit = new JMenuItem("Exit");
     public Success(){
+
         init();
     }
     public void init(){
@@ -28,6 +31,8 @@ public class Success extends JFrame {
         jmb.add(jmH);
         jmG.add(jmiOOXX);
         jmT.add(jmiEncrypt);
+        jmT.add(jmiEncryptF);
+        jmT.add(jmiCodeTable);
         jmF.add(jmiOpen);
         jmF.add(jmiClose);
         jmF.add(jmiExit);
@@ -45,11 +50,27 @@ public class Success extends JFrame {
                 Success.this.setVisible(false);
             }
         });
+        jmiEncryptF.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                EncryptFile ecf = new EncryptFile();
+                ecf.setVisible(true);
+                Success.this.setVisible(false);
+            }
+        });
         jmiOOXX.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 OOXX ox = new OOXX();
                 ox.setVisible(true);
+                Success.this.setVisible(false);
+            }
+        });
+        jmiCodeTable.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CodeTable ct = new CodeTable();
+                ct.setVisible(true);
                 Success.this.setVisible(false);
             }
         });
