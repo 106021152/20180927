@@ -14,6 +14,7 @@ public class Success extends JFrame {
     private JMenuItem jmiEncryptF = new JMenuItem("Encrypt File");
     private JMenuItem jmiCodeTable = new JMenuItem("CodeTable");
     private JMenuItem jmiMoveScript = new JMenuItem("MoveScript");
+    private JMenuItem jmiMouseScript = new JMenuItem("MouseScript");
     private JMenuItem jmiKeyMoveScript = new JMenuItem("KeyMoveScript");
     private JMenuItem jmiOpen = new JMenuItem("Open");
     private JMenuItem jmiClose = new JMenuItem("Close");
@@ -34,6 +35,7 @@ public class Success extends JFrame {
         jmG.add(jmiOOXX);
         jmG.add(jmiMoveScript);
         jmG.add(jmiKeyMoveScript);
+        jmG.add(jmiMouseScript);
         jmT.add(jmiEncrypt);
         jmT.add(jmiEncryptF);
         jmT.add(jmiCodeTable);
@@ -91,6 +93,14 @@ public class Success extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 KeyMoveScript kmo = new KeyMoveScript();
                 kmo.setVisible(true);
+                Success.this.setVisible(false);
+            }
+        });
+        jmiMouseScript.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MouseScript ms = new MouseScript();
+                ms.setVisible(true);
                 Success.this.setVisible(false);
             }
         });
