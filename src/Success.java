@@ -13,6 +13,8 @@ public class Success extends JFrame {
     private JMenuItem jmiEncrypt = new JMenuItem("Encrypt");
     private JMenuItem jmiEncryptF = new JMenuItem("Encrypt File");
     private JMenuItem jmiCodeTable = new JMenuItem("CodeTable");
+    private JMenuItem jmiMoveScript = new JMenuItem("MoveScript");
+    private JMenuItem jmiKeyMoveScript = new JMenuItem("KeyMoveScript");
     private JMenuItem jmiOpen = new JMenuItem("Open");
     private JMenuItem jmiClose = new JMenuItem("Close");
     private JMenuItem jmiExit = new JMenuItem("Exit");
@@ -30,6 +32,8 @@ public class Success extends JFrame {
         jmb.add(jmG);
         jmb.add(jmH);
         jmG.add(jmiOOXX);
+        jmG.add(jmiMoveScript);
+        jmG.add(jmiKeyMoveScript);
         jmT.add(jmiEncrypt);
         jmT.add(jmiEncryptF);
         jmT.add(jmiCodeTable);
@@ -74,6 +78,23 @@ public class Success extends JFrame {
                 Success.this.setVisible(false);
             }
         });
+        jmiMoveScript.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MoveScript mo = new MoveScript();
+                mo.setVisible(true);
+                Success.this.setVisible(false);
+            }
+        });
+        jmiKeyMoveScript.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                KeyMoveScript kmo = new KeyMoveScript();
+                kmo.setVisible(true);
+                Success.this.setVisible(false);
+            }
+        });
     }
 }
+
 
